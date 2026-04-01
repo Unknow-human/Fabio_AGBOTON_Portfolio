@@ -30,7 +30,7 @@ export function Projects() {
     {
       title: "Auto-stop",
       description: "Application de covoiturage pour assurer la sécurité et la confiance entre les acteurs de ce services (passager et conducteur)",
-      tags: ["firebase", "next.js", "TypeScript"],
+      tags: ["firebase", "Vite","fluter","TypeScript"],
       link: "https://gen-lang-client-0059539005.firebaseapp.com/",
     },
     {
