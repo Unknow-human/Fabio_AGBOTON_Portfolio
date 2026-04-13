@@ -41,7 +41,7 @@ export function Projects() {
     }
   ];
 
-  const industrialProjects = [
+const industrialProjects = [
     "Gestion d'incubation par microcontrôleur (couveuse automatisée)",
     "Commande d'éclairage par détection acoustique",
     "Navigation autonome par détection d'obstacles",
@@ -72,31 +72,44 @@ export function Projects() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {webProjects.map((project, index) => (
-              <motion.div
+              <motion.a
                 key={index}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-card border border-border p-6 rounded-xl hover:border-primary/50 transition-all group relative overflow-hidden"
+                className="bg-card border border-border p-6 rounded-xl hover:border-primary/50 transition-all group relative overflow-hidden flex flex-col h-full hover:shadow-[0_0_20px_rgba(0,242,255,0.1)]"
               >
-                <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
-                    <ExternalLink size={24} />
-                  </a>
+                <div className="flex justify-between items-start mb-4">
+                  <h4 className="text-xl font-bold group-hover:text-primary transition-colors">{project.title}</h4>
+                  <ExternalLink size={20} className="text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
                 </div>
-                <h4 className="text-xl font-bold mb-3 pr-8">{project.title}</h4>
-                <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
+                
+                <p className="text-muted-foreground mb-6 text-sm leading-relaxed flex-grow">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, i) => (
-                    <span key={i} className="text-xs font-mono px-2 py-1 bg-muted text-muted-foreground rounded-md">
+                    <span key={i} className="text-[10px] uppercase tracking-wider font-mono px-2 py-1 bg-muted text-muted-foreground rounded-md">
                       {tag}
                     </span>
                   ))}
                 </div>
-              </motion.div>
+
+                <div className="pt-4 border-t border-border/50 flex items-center gap-2 text-sm font-medium text-primary opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                  <span>Visiter le site</span>
+                  <motion.div
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                  >
+                    <ExternalLink size={14} />
+                  </motion.div>
+                </div>
+              </motion.a>
             ))}
           </div>
         </div>
@@ -127,3 +140,4 @@ export function Projects() {
     </section>
   );
 }
+
